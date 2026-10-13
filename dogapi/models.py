@@ -14,9 +14,14 @@ class Breed(models.Model):
     size = models.CharField(choices=size_choice)
     friendliness = models.IntegerField(validators=rating)
     trainability = models.IntegerField(validators=rating)
-    sheddingamount = models.IntegerField(validators=rating)
-    exerciseneeds = models.IntegerField(validators=rating)
-
+    sheddingamount = models.IntegerField(
+        validators=rating,
+        verbose_name="shedding amount"
+    )
+    exerciseneeds = models.IntegerField(
+        validators=rating,
+        verbose_name="exercise needs"
+    )
     def __str__(self):
         return self.name
 
