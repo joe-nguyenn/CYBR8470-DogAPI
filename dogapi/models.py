@@ -11,7 +11,7 @@ class Breed(models.Model):
     rating = [MinValueValidator(1), MaxValueValidator(5)]
 
     name = models.CharField
-    size = models.CharField(choices=sizechoice)
+    size = models.CharField(choices=size_choice)
     friendliness = models.IntegerField(validators=rating)
     trainability = models.IntegerField(validators=rating)
     sheddingamount = models.IntegerField(validators=rating)
