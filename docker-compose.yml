@@ -1,0 +1,31 @@
+services:
+  app:
+    build: .
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    environment:
+      POSTGRES_DB: dogdb
+      POSTGRES_USER: doguser
+      POSTGRES_PASSWORD: dogpassword
+      POSTGRES_HOST: db
+    depends_on:
+      - db
+
+
+
+  db:
+    image: postgres:17
+    environment:
+      POSTGRES_DB: dogdb
+      POSTGRES_USER: doguser
+      POSTGRES_PASSWORD: dogpassword
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+
+
+volumes:
+  postgres_data:
